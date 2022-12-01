@@ -230,7 +230,7 @@ lazy val pluginTesterJava = Project(id = "akka-grpc-plugin-tester-java", base = 
     ReflectiveCodeGen.codeGeneratorSettings ++= Seq("server_power_apis"))
   .pluginTestingSettings
 
-lazy val root = Project(id = "akka-grpc", base = file("."))
+lazy val root = Project(id = "pekko-grpc", base = file("."))
   .enablePlugins(ScalaUnidocPlugin)
   .disablePlugins(SitePlugin, MimaPlugin)
   .aggregate(

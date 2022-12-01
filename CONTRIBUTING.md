@@ -1,14 +1,16 @@
-# Welcome! Thank you for contributing to Akka gRPC!
+# Welcome! Thank you for contributing to Apache Pekko gRPC!
 
 We follow the standard GitHub [fork & pull](https://help.github.com/articles/using-pull-requests/#fork--pull) approach to pull requests. Just fork the official repo, develop in a branch, and submit a PR!
 
-You're always welcome to submit your PR straight away and start the discussion (without reading the rest of this wonderful doc, or the README.md). The goal of these notes is to make your experience contributing to Akka gRPC as smooth and pleasant as possible. We're happy to guide you through the process once you've submitted your PR.
+You're always welcome to submit your PR straight away and start the discussion (without reading the rest of this wonderful doc, or the README.md). The goal of these notes is to make your experience contributing to Pekko gRPC as smooth and pleasant as possible. We're happy to guide you through the process once you've submitted your PR.
 
-# The Akka Community
+# The Apache Pekko Community
 
-In case of questions about the contribution process or for discussion of specific issues please visit the [akka/dev gitter chat](https://gitter.im/akka/dev).
+If you have questions about the contribution process or discuss specific issues, please interact with the community using the following resources.
 
-You may also check out these [other resources](https://akka.io/get-involved/).
+- [GitHub discussions](https://github.com/apache/incubator-pekko-http/discussions): for questions and general discussion.
+- [Pekko dev mailing list](https://lists.apache.org/list.html?dev@pekko.apache.org): for Pekko development discussions.
+- [GitHub issues](https://github.com/apache/incubator-pekko-http/issues): for bug reports and feature requests. Please search the existing issues before creating new ones. If you are unsure whether you have found a bug, consider asking in GitHub discussions or the mailing list first.
 
 # Navigating around the project & codebase
 
@@ -16,20 +18,20 @@ You may also check out these [other resources](https://akka.io/get-involved/).
 
 Depending on which version (or sometimes module) you want to work on, you should target a specific branch as explained below:
 
-* `main` – active development branch of akka-grpc
+* `main` – active development branch of pekko-grpc
 
 ## Issues
 
 In general *all issues are open for anyone working on them*, however if you're new to the project and looking for an issue
 that will be accepted and likely is a nice one to get started you should check out the following tags:
 
-- [help wanted](https://github.com/akka/akka-grpc/labels/help%20wanted) - which identifies issues that the core team will likely not have time to work on, or the issue is a nice entry level ticket. If you're not sure how to solve a ticket but would like to work on it feel free to ask in the issue about clarification or tips.
-- [nice-to-have (low-priority)](https://github.com/akka/akka-grpc/labels/nice-to-have%20%28low-prio%29) - are tasks which make sense, however are not very high priority (in face of other very high priority issues). If you see something interesting in this list, a contribution would be really wonderful!
+- [help wanted](https://github.com/apache/incubator-pekko-grpc/labels/help%20wanted) - which identifies issues that the core team will likely not have time to work on, or the issue is a nice entry level ticket. If you're not sure how to solve a ticket but would like to work on it feel free to ask in the issue about clarification or tips.
+- [nice-to-have (low-priority)](https://github.com/apache/incubator-pekko-grpc/labels/nice-to-have%20%28low-prio%29) - are tasks which make sense, however are not very high priority (in face of other very high priority issues). If you see something interesting in this list, a contribution would be really wonderful!
 
 Another group of special tags indicate specific states a ticket is in:
 
-- [bug](https://github.com/akka/akka-grpc/labels/bug) - bugs take priority in being fixed above features. The core team dedicates a number of days to working on bugs each sprint. Bugs which have reproducers are also great for community contributions as they're well isolated. Sometimes we're not as lucky to have reproducers though, then a bugfix should also include a test reproducing the original error along with the fix.
-- [failed](https://github.com/akka/akka-grpc/labels/failed) - tickets indicate a Jenkins failure (for example from a nightly build). These tickets usually start with the `FAILED: ...` message, and include a stacktrace + link to the Jenkins failure. The tickets are collected and worked on with priority to keep the build stable and healthy. Often times it may be simple timeout issues (Jenkins boxes are slow), though sometimes real bugs are discovered this way.
+- [bug](https://github.com/apache/incubator-pekko-grpc/labels/bug) - bugs take priority in being fixed above features. The core team dedicates a number of days to working on bugs each sprint. Bugs which have reproducers are also great for community contributions as they're well isolated. Sometimes we're not as lucky to have reproducers though, then a bugfix should also include a test reproducing the original error along with the fix.
+- [failed](https://github.com/apache/incubator-pekko-grpc/labels/failed) - tickets indicate a Jenkins failure (for example from a nightly build). These tickets usually start with the `FAILED: ...` message, and include a stacktrace + link to the Jenkins failure. The tickets are collected and worked on with priority to keep the build stable and healthy. Often times it may be simple timeout issues (Jenkins boxes are slow), though sometimes real bugs are discovered this way.
 
 Pull Request validation states:
 
@@ -41,32 +43,31 @@ gRPC runs on HTTP/2 and connections commonly use HTTPS.
 
 If you are running on JDK 8, you will need to use at least version 1.8.0u251 to make sure ALPN protocol negotiation is available.  
 
-# Akka gRPC contributing guidelines
+# Pekko gRPC contributing guidelines
 
-These guidelines apply to all Akka projects, by which we mean both the `akka/akka` repository,
-as well as any plugins or additional repos located under the Akka GitHub organisation, e.g. `akka/akka-grpc` and others.
+These guidelines apply to all Pekko projects, by which we mean both the `apache/incubator-pekko` repository,
+as well as any plugins or additional repos located under the Apache Pekko GitHub organisation, e.g. `apache/incubator-pekko-grpc` and others.
 
 These guidelines are meant to be a living document that should be changed and adapted as needed.
 We encourage changes that make it easier to achieve our goals in an efficient way.
 
 Please also note that we have a *Code of Conduct* in place which aims keep our community a nice and helpful one.
-You can read its full text here: [Lightbend Community Code of Conduct](https://www.lightbend.com/conduct).
+You can read its full text here: [ASF Code of Conduct](https://www.apache.org/foundation/policies/conduct).
 
 ## General Workflow
 
 The below steps are how to get a patch into a main development branch (e.g. `main`).
 The steps are exactly the same for everyone involved in the project (be it core team, or first time contributor).
 
-1. To avoid duplicated effort, it might be good to check the [issue tracker](https://github.com/akka/akka-grpc/issues) and [existing pull requests](https://github.com/akka/akka-grpc/pulls) for existing work.
-   - If there is no ticket yet, feel free to [create one](https://github.com/akka/akka-grpc/issues/new) to discuss the problem and the approach you want to take to solve it.
-1. [Fork the project](https://github.com/akka/akka-grpc#fork-destination-box) on GitHub. You'll need to create a feature-branch for your work on your fork, as this way you'll be able to submit a PullRequest against the mainline Akka-gRPC.
-1. Create a branch on your fork and work on the feature. For example: `git checkout -b wip-custom-headers-akka-grpc`
+1. To avoid duplicated effort, it might be good to check the [issue tracker](https://github.com/apache/incubator-pekko-grpc/issues) and [existing pull requests](https://github.com/apache/incubator-pekko-grpc/pulls) for existing work.
+   - If there is no ticket yet, feel free to [create one](https://github.com/apache/incubator-pekko-grpc/issues/new) to discuss the problem and the approach you want to take to solve it.
+1. [Fork the project](https://github.com/apache/incubator-pekko-grpc#fork-destination-box) on GitHub. You'll need to create a feature-branch for your work on your fork, as this way you'll be able to submit a PullRequest against the mainline Pekko-gRPC.
+1. Create a branch on your fork and work on the feature. For example: `git checkout -b wip-custom-headers-pekko-grpc`
    - Please make sure to follow the general quality guidelines (specified below) when developing your patch.
    - Please write additional tests covering your feature and adjust existing ones if needed before submitting your Pull Request. The `validatePullRequest` sbt task ([explained below](#the-validatepullrequest-task)) may come in handy to verify your changes are correct.
 1. Once your feature is complete, prepare the commit following our [Creating Commits And Writing Commit Messages](#creating-commits-and-writing-commit-messages). For example, a good commit message would be: `Adding compression support for Manifests #22222` (note the reference to the ticket it aimed to resolve).
 1. Now it's finally time to [submit the Pull Request](https://help.github.com/articles/using-pull-requests)!
-1. If you have not already done so, you will be asked by our CLA bot to [sign the Lightbend CLA](https://www.lightbend.com/contribute/cla) online CLA stands for Contributor License Agreement and is a way of protecting intellectual property disputes from harming the project.
-1. If you're not already on the contributors white-list, the @akka-ci bot will ask `Can one of the repo owners verify this patch?`, to which a core member will reply by commenting `OK TO TEST`. This is just a sanity check to prevent malicious code from being run on the Jenkins cluster.
+1. For large PRs, we may ask you to submit an Apache Software Foundation [CLA](https://www.apache.org/licenses/contributor-agreements.html).
 1. Now both committers and interested people will review your code. This process is to ensure the code we merge is of the best possible quality, and that no silly mistakes slip through. You're expected to follow-up these comments by adding new commits to the same branch. The commit messages of those commits can be more lose, for example: `Removed debugging using printline`, as they all will be squashed into one commit before merging into the main branch.
     - The community and team are really nice people, so don't be afraid to ask follow up questions if you didn't understand some comment, or would like to clarify how to continue with a given feature. We're here to help, so feel free to ask and discuss any kind of questions you might have during review!
 1. After the review you should fix the issues as needed (pushing a new commit for new review etc.), iterating until the reviewers give their thumbs up–which is signalled usually by a comment saying `LGTM`, which means "Looks Good To Me". 
@@ -77,18 +78,18 @@ The steps are exactly the same for everyone involved in the project (be it core 
 
 The TL;DR; of the above very precise workflow version is:
 
-1. Fork akka-grpc
+1. Fork pekko-grpc
 2. Hack and test on your feature (on a branch)
 3. Submit a PR
 4. Sign the CLA if necessary
 4. Keep polishing it until received enough LGTM
 5. Profit!
 
-Note that the akka-grpc sbt project is not as large as the Akka one, so `sbt` should be able to run with less heap than with the Akka project. In case you need to increase the heap, this can be specified using a command line argument `sbt -mem 2048` or in the environment variable `SBT_OPTS` but then as a regular JVM memory flag, for example `SBT_OPTS=-Xmx2G`, on some platforms you can also edit the global defaults for sbt in `/usr/local/etc/sbtopts`.
+Note that the pekko-grpc sbt project is not as large as the Pekko one, so `sbt` should be able to run with less heap than with the Pekko project. In case you need to increase the heap, this can be specified using a command line argument `sbt -mem 2048` or in the environment variable `SBT_OPTS` but then as a regular JVM memory flag, for example `SBT_OPTS=-Xmx2G`, on some platforms you can also edit the global defaults for sbt in `/usr/local/etc/sbtopts`.
 
 ## Binary compatibility
 
-Akka gRPC is still in experimental mode, so this section does not apply yet.
+Pekko gRPC is still in experimental mode, so this section does not apply yet.
 However, once we declare the project stable, we will adhere to the following
 rules:
 
@@ -96,7 +97,7 @@ Our binary compatibility guarantees are described in depth in the
 [Binary Compatibility](https://doc.akka.io/docs/akka-grpc/current/binary-compatibility.html)
 section of the documentation.
 
-Akka gRPC uses [Lightbend MiMa](https://github.com/lightbend/mima) to
+Pekko gRPC uses [Lightbend MiMa](https://github.com/lightbend/mima) to
 validate binary compatibility of incoming Pull Requests. If your PR fails due to binary compatibility issues, you may see 
 an error like this:
 
@@ -121,12 +122,12 @@ incompatibility has been successfully ignored after adding it to the filter file
 
 ### Generated code
 
-Generated code is not checked by MiMa. However, we do want code generated with a previous version of Akka gRPC
+Generated code is not checked by MiMa. However, we do want code generated with a previous version of Pekko gRPC
 to be usable with later versions. This means you should be extra careful not to introduce binary incompatibilities
-when changing the code generators. Of course, when adding new Akka gRPC features it is not required that those
+when changing the code generators. Of course, when adding new Pekko gRPC features it is not required that those
 features work with code generated for previous versions.
 
-Generated code may call Akka gRPC code that is internal. In those cases we mark those internal API's as
+Generated code may call Pekko gRPC code that is internal. In those cases we mark those internal API's as
 `@InternalStableApi` to avoid accidentally breaking compatibility.
 
 ## Pull Request Requirements
@@ -136,12 +137,12 @@ For a Pull Request to be considered at all it has to meet these requirements:
 1. Regardless if the code introduces new features or fixes bugs or regressions, it must have comprehensive tests.
 1. The code must be well documented in the Lightbend's standard documentation format (see the ‘Documentation’ section below).
 1. The commit messages must properly describe the changes, see further below.
-1. All Lightbend projects must include Lightbend copyright notices.  Each project can choose between one of two approaches:
+1. All Apache projects must include Apache copyright notices.  Each project can choose between one of two approaches:
 
-    1. All source files in the project must have a Lightbend copyright notice in the file header.
-    1. The Notices file for the project includes the Lightbend copyright notice and no other files contain copyright notices.  See https://www.apache.org/legal/src-headers.html for instructions for managing this approach for copyrights.
+    1. All source files in the project must have an Apache copyright notice in the file header.
+    1. The Notices file for the project includes the Apache copyright notice and no other files contain copyright notices.  See https://www.apache.org/legal/src-headers.html for instructions for managing this approach for copyrights.
 
-    Akka gRPC uses the first choice, having copyright notices in every file header.
+    Pekko gRPC uses the first choice, having copyright notices in every file header.
 
 
 ### Additional guidelines
@@ -165,7 +166,6 @@ All documentation must abide by the following maxims:
 - Example code should be run as part of an automated test suite.
 - Version should be **programmatically** specifiable to the build.
 - Generation should be **completely automated** and available for scripting.
-- Artifacts that must be included in the Lightbend stack should be published to a maven “documentation” repository as documentation artifacts.
 - When renaming Markdown files, add a rewrite rule to the `.htaccess` file to not break external links.
 
 All documentation is preferred to be in Lightbend's standard documentation format [Paradox](https://github.com/lightbend/paradox).
@@ -183,7 +183,7 @@ The rendered documentation will be available under `docs/target/paradox/site/mai
 
 ### JavaDoc
 
-Akka gRPC generates JavaDoc-style API documentation using the [genjavadoc](https://github.com/lightbend/genjavadoc) sbt plugin, since the sources are written mostly in Scala.
+Pekko gRPC generates JavaDoc-style API documentation using the [genjavadoc](https://github.com/lightbend/genjavadoc) sbt plugin, since the sources are written mostly in Scala.
 
 Generating JavaDoc is not enabled by default, as it's not needed on day-to-day development as it's expected to just work.
 If you'd like to check if you links and formatting looks good in JavaDoc (and not only in ScalaDoc), you can generate it by running:
@@ -236,7 +236,7 @@ Example:
 
 ## Pull request validation workflow details
 
-Akka gRPC uses [Jenkins GitHub pull request builder plugin](https://wiki.jenkins-ci.org/display/JENKINS/GitHub+pull+request+builder+plugin)
+Pekko gRPC uses [Jenkins GitHub pull request builder plugin](https://wiki.jenkins-ci.org/display/JENKINS/GitHub+pull+request+builder+plugin)
 that automatically merges the code, builds it, runs the tests and comments on the Pull Request in GitHub.
 
 Upon a submission of a Pull Request the GitHub pull request builder plugin will post a following comment:
@@ -245,16 +245,11 @@ Upon a submission of a Pull Request the GitHub pull request builder plugin will 
 
 This requires a member from a core team to start Pull Request validation process by posting comment consisting only of `OK TO TEST`. From now on, whenever new commits are pushed to the Pull Request, a validation job will be automatically started and the results of the validation posted to the Pull Request.
 
-A Pull Request validation job can be started manually by posting `PLS BUILD` comment on the Pull Request.
-
-Note, that `OK TO TEST` will only be picked up when the user asking for it is considered an admin. Public (!) members of the [akka organization](https://github.com/orgs/akka/people) are automatically considered admins and users manually declared admin in the Jenkins job (currently no one is explicitly listed). `PLS BUILD` can be issued by everyone that is an admin or everyone who was whitelisted in the Jenkins Job (whitelisting != declaring someone an admin).
-
-
 ## Source style
 
 ### Scala style 
 
-Akka gRPC uses [Scalariform](https://github.com/daniel-trinh/scalariform) to enforce some of the code style rules.
+Pekko gRPC uses [Scalariform](https://github.com/daniel-trinh/scalariform) to enforce some of the code style rules.
 
 ### Java style
 
@@ -269,7 +264,7 @@ Thus we ask Java contributions to follow these simple guidelines:
 
 Avoid short test timeouts, since Jenkins server may GC heavily causing spurious test failures. GC pause or other hiccup of 2 seconds is common in our CI environment. Please note that usually giving a larger timeout *does not slow down the tests*, as in an `expectMessage` call for example it usually will complete quickly.
 
-There is a number of ways timeouts can be defined in Akka tests. The following ways to use timeouts are recommended (in order of preference): 
+There is a number of ways timeouts can be defined in Pekko tests. The following ways to use timeouts are recommended (in order of preference): 
 
 * `remaining` is first choice (requires `within` block)
 * `remainingOrDefault` is second choice
@@ -278,16 +273,16 @@ There is a number of ways timeouts can be defined in Akka tests. The following w
 
 Special care should be given `expectNoMessage` calls, which indeed will wait the entire timeout before continuing, therefore a shorter timeout should be used in those, for example `200` or `300.millis`.
 
-You can read up on remaining and friends in [TestKit.scala](https://github.com/akka/akka/blob/master/akka-testkit/src/main/scala/akka/testkit/TestKit.scala)
+You can read up on remaining and friends in [TestKit.scala](https://github.com/apache/incubator-pekko/blob/main/akka-testkit/src/main/scala/org/apache/pekko/testkit/TestKit.scala)
 
 # Supporting infrastructure
 
 ## Continuous Integration
 
-akka-grpc currently uses Github Actions for Continuous Integration. See the `Checks` tab in a PR for details about the current run.
+pekko-grpc currently uses Github Actions for Continuous Integration. See the `Checks` tab in a PR for details about the current run.
 
 ## Related links
 
-* [Lightbend Contributor License Agreement](https://www.lightbend.com/contribute/cla)
-* [Akka gRPC Issue Tracker](https://github.com/akka/akka-grpc/issues)
+* [Apache Contributor License Agreement](https://www.apache.org/licenses/contributor-agreements.html)
+* [Pekko gRPC Issue Tracker](https://github.com/apache/incubator-pekko-grpc/issues)
 * [Scalariform](https://github.com/daniel-trinh/scalariform)

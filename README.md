@@ -1,9 +1,9 @@
-# akka-grpc
+# Apache Pekko gRPC
 
 Support for building streaming gRPC servers and clients on top
-of Akka Streams.
+of Pekko Streams.
 
-This library is meant to be used as a building block in projects using the Akka
+This library is meant to be used as a building block in projects using the Pekko
 toolkit.
 
 ## Documentation
@@ -14,7 +14,7 @@ toolkit.
 
 This library is ready to be used in production, but API's and build system plugins are still expected to be improved and [may change](https://doc.akka.io/docs/akka/current/common/may-change.html).
 
-The API on both sides (Client and Server) is a simple Akka Streams-based one.
+The API on both sides (Client and Server) is a simple Pekko Streams-based one.
 
 The client side is
 currently implemented on top of [io.grpc:grpc-netty-shaded](https://mvnrepository.com/artifact/io.grpc/grpc-netty-shaded),
@@ -30,11 +30,11 @@ gRPC is a schema-first RPC framework, where your protocol is declared in a
 protobuf definition, and requests and responses will be streamed over an HTTP/2
 connection.
 
-Based on a protobuf service definition, akka-grpc can generate:
+Based on a protobuf service definition, pekko-grpc can generate:
 
 * Model classes (using plain protoc for Java or scalapb for Scala)
-* The API (as an interface for Java or a trait for Scala), expressed in Akka Streams `Source`s
-* On the server side, code to create an Akka HTTP route based on your implementation of the API
+* The API (as an interface for Java or a trait for Scala), expressed in Pekko Streams `Source`s
+* On the server side, code to create an Pekko HTTP route based on your implementation of the API
 * On the client side, a client for the API.
 
 ## Project structure
@@ -54,8 +54,6 @@ project in Java and Scala respectively, with both sbt and Gradle configurations.
 
 If used with JDK 8 prior to version 1.8.0_251 you must add an [ALPN agent](https://doc.akka.io/docs/akka-http/10.1/server-side/http2.html#application-layer-protocol-negotiation-alpn-).
 
-Support for Akka gRPC is available via the [Lightbend Subscription](https://lightbend.com/lightbend-subscription)
-
 ## License
 
-Akka gRPC is Open Source and available under the Apache 2 License.
+Pekko gRPC is Open Source and available under the Apache 2 License.

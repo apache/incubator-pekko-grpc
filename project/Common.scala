@@ -20,22 +20,23 @@ object Common extends AutoPlugin {
   override def globalSettings =
     Seq(
       organization := "com.lightbend.akka.grpc",
-      organizationName := "Lightbend Inc.",
-      organizationHomepage := Some(url("https://www.lightbend.com/")),
-      resolvers += Resolver.sonatypeRepo("staging"),
-      homepage := Some(url("https://akka.io/")),
-      scmInfo := Some(ScmInfo(url("https://github.com/akka/akka-grpc"), "git@github.com:akka/akka-grpc")),
+      organizationName := "Apache Pekko",
+      organizationHomepage := Some(url("https://www.apache.org/")),
+      resolvers ++= Resolver.sonatypeOssRepos("staging"),
+      homepage := Some(url("https://pekko.apache.org//")),
+      scmInfo := Some(ScmInfo(url("https://github.com/apache/incubator-pekko-grpc"),
+        "git@github.com:apache/incubator-pekko-grpc")),
       developers += Developer(
         "contributors",
         "Contributors",
         "https://gitter.im/akka/dev",
-        url("https://github.com/akka/akka-grpc/graphs/contributors")),
+        url("https://github.com/apache/incubator-pekko-grpc/graphs/contributors")),
       licenses := Seq("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0")),
-      description := "Akka gRPC - Support for building streaming gRPC servers and clients on top of Akka Streams.")
+      description := "Apache Pekko gRPC - Support for building streaming gRPC servers and clients on top of Pekko Streams.")
 
   override lazy val projectSettings = Seq(
     projectInfoVersion := (if (isSnapshot.value) "snapshot" else version.value),
-    sonatypeProfileName := "com.lightbend",
+    sonatypeProfileName := "org.apache.pekko",
     scalacOptions ++= List(
       "-unchecked",
       "-deprecation",
@@ -56,7 +57,7 @@ object Common extends AutoPlugin {
     javacOptions ++= List("-Xlint:unchecked", "-Xlint:deprecation"),
     Compile / doc / scalacOptions := scalacOptions.value ++ Seq(
       "-doc-title",
-      "Akka gRPC",
+      "Apache Pekko gRPC",
       "-doc-version",
       version.value,
       "-sourcepath",
@@ -66,7 +67,7 @@ object Common extends AutoPlugin {
       "templates",
       "-doc-source-url", {
         val branch = if (isSnapshot.value) "main" else s"v${version.value}"
-        s"https://github.com/akka/akka-grpc/tree/${branch}€{FILE_PATH_EXT}#L€{FILE_LINE}"
+        s"https://github.com/apache/incubator-pekko-grpc/tree/${branch}€{FILE_PATH_EXT}#L€{FILE_LINE}"
       },
       "-doc-canonical-base-url",
       "https://doc.akka.io/api/akka-grpc/current/"),

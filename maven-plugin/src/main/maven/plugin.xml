@@ -6,6 +6,10 @@
   <groupId>org.apache.pekko</groupId>
   <artifactId>pekko-grpc-maven-plugin</artifactId>
   <goalPrefix>pekko-grpc</goalPrefix>
+  <configuration>
+    <source>1.8</source>
+    <target>1.8</target>
+  </configuration>
   <mojos>
     <mojo>
       <goal>generate</goal>

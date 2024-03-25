@@ -79,6 +79,13 @@ object Common extends AutoPlugin {
                                      "-Wconf:msg=unused import:silent",
                                      "-Wconf:cat=feature:silent")),
     Compile / console / scalacOptions ~= (_.filterNot(consoleDisabledOptions.contains)),
+    // restrict to 'compile' scope because otherwise it is also passed to
+    // javadoc and -target is not valid there.
+    // https://github.com/sbt/sbt/issues/1785
+    Compile / compile / javacOptions ++=
+      onlyAfterJdk8("--release", "8"),
+    Compile / compile / scalacOptions ++=
+      onlyAfterJdk8("-release", "8"),
     javacOptions ++= List("-Xlint:unchecked", "-Xlint:deprecation"),
     Compile / doc / scalacOptions := scalacOptions.value ++ Seq(
       "-doc-title",
@@ -109,6 +116,15 @@ object Common extends AutoPlugin {
     (Test / testOptions) += Tests.Argument(TestFrameworks.ScalaTest, "-oDF"),
     crossScalaVersions := Seq(scala212, scala213, scala3),
     mimaReportSignatureProblems := true)
+
+  val specificationVersion: String = sys.props("java.specification.version")
+
+  def isJdk8: Boolean =
+    VersionNumber(specificationVersion).matchesSemVer(SemanticSelector(s"=1.8"))
+
+  def onlyOnJdk8[T](values: T*): Seq[T] = if (isJdk8) values else Seq.empty[T]
+
+  def onlyAfterJdk8[T](values: T*): Seq[T] = if (isJdk8) Seq.empty[T] else values
 
   override lazy val buildSettings = Seq(
     dynverSonatypeSnapshots := true)
